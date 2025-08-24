@@ -1,0 +1,31 @@
+name: ✅ Validação do Projeto LINUX-APACHE
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🔄 Clonar repositório
+      uses: actions/checkout@v3
+
+    - name: 📁 Verificar existência do Vagrantfile
+      run: |
+        if [ ! -f ./Vagrantfile ]; then
+          echo "Vagrantfile não encontrado!"
+          exit 1
+        fi
+
+    - name: 📂 Verificar scripts obrigatórios
+      run: |
+        test -f ./scripts/deploy-this-lab.ps1 || (echo "deploy-this-lab.ps1 não encontrado!" && exit 1)
+        test -f ./scripts/install-apache.sh || (echo "install-apache.sh não encontrado!" && exit 1)
+
+    - name: ✅ Validar sintaxe do script PowerShell (simples)
+      run: pwsh -Command "Get-Content ./scripts/deploy-this-lab.ps1 | Out-String | Invoke-Expression"
+      shell: pwsh
