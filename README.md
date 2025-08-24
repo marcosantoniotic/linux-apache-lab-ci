@@ -34,7 +34,7 @@ Clique no botão abaixo para executar automaticamente o ambiente Linux + Apache 
 ## 🧪 Comandos manuais
 
 ```powershell
-git clone https://github.com/marnep/LINUX-APACHE.git
+git clone https://github.com/marnep/linux-apache-v2.git
 cd LINUX-APACHE
 vagrant up
 ```
