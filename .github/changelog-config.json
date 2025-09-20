@@ -1,0 +1,17 @@
+{
+  "categories": [
+    {
+      "title": "✨ Novidades",
+      "labels": ["feature", "enhancement"]
+    },
+    {
+      "title": "🐛 Correções",
+      "labels": ["bug"]
+    },
+    {
+      "title": "🛠 Melhorias",
+      "labels": ["refactor", "docs"]
+    }
+  ],
+  "template": "# 🚀 Versão {{version}}\n\n{{#categories}}{{title}}\n\n{{#issues}}{{name}} {{#labels}}`{{name}}` {{/labels}}\n- {{title}}\n\n{{/issues}}{{/categories}}"
+}
